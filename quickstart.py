@@ -7,7 +7,7 @@ from google.auth.transport.requests import Request
 from Tessy import *
 
 # If modifying these scopes, delete the file token.pickle.
-SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
+SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
 
 # The ID and range of a sample spreadsheet.
 SAMPLE_SPREADSHEET_ID = '1_RLGg69fFbpqOYRsqySBMyGIEs7ox94gEcW7mfu_GW4'
@@ -51,6 +51,14 @@ def main():
         print("Original odometer reading is: " + original_value)
         new_value = get_first_odometer_reading()
         values[0][0] = new_value
+
+        body = {
+            'values': values
+        }
+        result = service.spreadsheets().values().update(
+            spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME,
+            valueInputOption="USER_ENTERED", body=body).execute()
+        print('{0} cells updated.'.format(result.get('updatedCells')))
 
 
 if __name__ == '__main__':
