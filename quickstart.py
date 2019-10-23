@@ -4,6 +4,7 @@ import os.path
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+from Tessy import *
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
@@ -48,6 +49,8 @@ def main():
     else:
         original_value = values[0][0];
         print("Original odometer reading is: " + original_value)
+        new_value = get_first_odometer_reading()
+        values[0][0] = new_value
 
 
 if __name__ == '__main__':
