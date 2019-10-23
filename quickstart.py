@@ -9,8 +9,8 @@ from google.auth.transport.requests import Request
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 # The ID and range of a sample spreadsheet.
-SAMPLE_SPREADSHEET_ID = '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
-SAMPLE_RANGE_NAME = 'Class Data!A2:E'
+SAMPLE_SPREADSHEET_ID = '1_RLGg69fFbpqOYRsqySBMyGIEs7ox94gEcW7mfu_GW4'
+SAMPLE_RANGE_NAME = 'Sheet1!A2:A2'
 
 def main():
     """Shows basic usage of the Sheets API.
@@ -46,10 +46,9 @@ def main():
     if not values:
         print('No data found.')
     else:
-        print('Name, Major:')
-        for row in values:
-            # Print columns A and E, which correspond to indices 0 and 4.
-            print('%s, %s' % (row[0], row[4]))
+        original_value = values[0][0];
+        print("Original odometer reading is: " + original_value)
+
 
 if __name__ == '__main__':
     main()
