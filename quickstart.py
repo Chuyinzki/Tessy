@@ -5,6 +5,7 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from Tessy import *
+import webbrowser
 
 # If modifying these scopes, delete the file token.pickle.
 SCOPES = ['https://www.googleapis.com/auth/spreadsheets']
@@ -59,6 +60,7 @@ def main():
             spreadsheetId=SAMPLE_SPREADSHEET_ID, range=SAMPLE_RANGE_NAME,
             valueInputOption="USER_ENTERED", body=body).execute()
         print('{0} cells updated.'.format(result.get('updatedCells')))
+        webbrowser.open_new_tab("https://docs.google.com/spreadsheets/d/1g9nDSUQZV80hCyp0DoiQAwHpJI8ht0GeQ4LWjwDfbPo/")
 
 
 if __name__ == '__main__':
