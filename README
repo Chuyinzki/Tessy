@@ -1,0 +1,2 @@
+To generate new access token, use:
+npx generate-tesla-token
