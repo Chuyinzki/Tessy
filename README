@@ -1,2 +1,8 @@
 To generate new access token, use:
 npx generate-tesla-token
+pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+
+If you get authentication errors beyond Tesla, delete that token.pickle file.
+
+
+https://developers.google.com/sheets/api/quickstart/python
