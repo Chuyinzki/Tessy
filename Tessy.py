@@ -14,6 +14,8 @@ def get_vehicle_odometer(vehicle_id, vehicle_name, session):
     print("Getting odometer reading for " + vehicle_name)
     response = session.get('https://owner-api.teslamotors.com/api/1/vehicles/' + str(vehicle_id) + '/data_request/vehicle_state')
     data = response.json()
+    if response.status_code != 200:
+        print("Response from " + vehicle_name + " was not 200: " + str(response.status_code) + " " + response.text)
     try:
         ret = data['response']['odometer']
     except TypeError as error:
