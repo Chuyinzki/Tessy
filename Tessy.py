@@ -4,7 +4,11 @@ from myconfig import *
 
 def get_vehicle_ids(session):
     ret_object = {}
-    response = session.get('https://owner-api.teslamotors.com/api/1/vehicles').json()['response']
+    response = {}
+    try:
+        response = session.get('https://owner-api.teslamotors.com/api/1/vehicles').json()['response']
+    except:
+        print("Could not get list of vehicles. Tesla API token might be invalid.")
     for obj in response:
         ret_object[obj['id']] = obj['display_name']
     return ret_object
@@ -16,6 +20,8 @@ def get_vehicle_odometer(vehicle_id, vehicle_name, session):
     data = response.json()
     if response.status_code != 200:
         print("Response from " + vehicle_name + " was not 200: " + str(response.status_code) + " " + response.text)
+        print("Try to wake it using your phone")
+        raise
     try:
         ret = data['response']['odometer']
     except TypeError as error:
