@@ -5,4 +5,6 @@ pip3 install --upgrade google-api-python-client google-auth-httplib2 google-auth
 If you get authentication errors beyond Tesla, delete that token.pickle file.
 
 
+Credentials error, you need to download the credentials.json file:
+
 https://developers.google.com/sheets/api/quickstart/python
