@@ -48,9 +48,9 @@ def main():
     if not values:
         print('No data found.')
     else:
-        original_value = values[0][0];
+        original_value = values[0][0]
         print("Original odometer reading is: " + original_value)
-        new_value = get_first_odometer_reading()
+        new_value = get_tessy_odometer_reading()
         values[0][0] = new_value
 
         body = {

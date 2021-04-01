@@ -1,6 +1,7 @@
 import requests
 from myconfig import *
 
+CONST_TESSY_ID = 15372580391886096
 
 def get_vehicle_ids(session):
     ret_object = {}
@@ -32,9 +33,16 @@ def get_vehicle_odometer(vehicle_id, vehicle_name, session):
 
 
 def get_first_odometer_reading():
-    s = requests.Session()
-    s.headers.update({'Authorization': 'Bearer ' + access_token})
+    s = prepare_session()
     vehicles = get_vehicle_ids(s)
     first_id = next(iter(vehicles))
     odometer = get_vehicle_odometer(first_id, vehicles[first_id], s)
     return odometer
+
+def get_tessy_odometer_reading():
+    return get_vehicle_odometer(15372580391886096, "Tessy", prepare_session())
+
+def prepare_session():
+    s = requests.Session()
+    s.headers.update({'Authorization': 'Bearer ' + access_token})
+    return s
